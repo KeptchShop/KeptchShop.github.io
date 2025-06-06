@@ -1,0 +1,491 @@
+/* เริ่มด้วย opacity 1 */
+body {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  background: #fffafc;
+  font-family: "Sarabun", sans-serif;
+  color: #333;
+}
+
+/* เวลาอยากให้จาง */
+.fade-out {
+  opacity: 0;
+}
+
+/* รีเซ็ตเบื้องต้น */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* พื้นฐาน */
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #f3f4f8;
+  color: #333;
+  line-height: 1.7;
+}
+
+/* กล่องจำกัดความกว้าง */
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* ส่วนหัว */
+header {
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  color: #fff;
+  padding: 1.2rem 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+/* กล่องจัดเรียงใน header */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* ชื่อเว็บไซต์ */
+.site-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  text-align: left;
+}
+
+/* กล่องเมนู */
+.menu-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* ปุ่มแฮมเบอร์เกอร์ */
+.hamburger {
+  font-size: 2.5rem; /* ขยายให้ดูเด่นขึ้น */
+  cursor: pointer;
+  color: #fff;
+  order: 2;
+  position: relative; /* ให้ position เพื่อใช้ z-index */
+  z-index: 150; /* ให้สูงกว่าเมนู */
+  user-select: none; /* กันเลือกข้อความเวลาแตะ */
+  transition: color 0.3s ease;
+}
+.hamburger:hover {
+  color: #ffe9ff;
+}
+
+/* เมนูนำทาง */
+nav {
+  position: relative;
+}
+
+/* เมนู dropdown */
+nav ul {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+  position: absolute;
+  top: 110%; /* ลดระยะให้เมนูชิดปุ่มมากขึ้น */
+  right: 0;
+  background: rgba(106, 17, 203, 0.95);
+  padding: 1rem 2rem; /* ขยายซ้ายขวานิดหน่อย */
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  z-index: 100; /* น้อยกว่า hamburger */
+  list-style: none;
+  transform-origin: top right; /* origin ของ scale */
+  transform: scale(0.95);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 180px; /* กำหนดความกว้างขั้นต่ำ */
+}
+
+/* แสดงเมนู */
+nav ul.show {
+  display: flex;
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+/* รายการเมนู */
+nav li {
+  transition: transform 0.15s ease, background-color 0.3s ease;
+  border-radius: 8px;
+  padding: 0.3rem 0.5rem;
+}
+
+nav li:hover {
+  transform: translateX(8px);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 0.3rem 0;
+  display: block;
+  transition: color 0.3s ease;
+}
+nav a:hover {
+  color: #ffe9ff;
+}
+
+/* ส่วน Hero */
+.hero {
+  background: linear-gradient(90deg, #d3cce3, #e9e4f0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 3rem 1rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  min-height: 200px;
+}
+
+.hero .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  color: #4b0082;
+  margin-bottom: 0.5rem;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* โครงสร้างเนื้อหา */
+.layout {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+article {
+  flex: 3;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+article h3 {
+  color: #5a189a;
+  margin-bottom: 0.5rem;
+}
+
+article p {
+  margin-bottom: 1rem;
+}
+
+/* ปุ่ม */
+button {
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+button:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+/* แถบข้าง */
+aside {
+  flex: 1;
+  background: #f2f0ff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+aside h4 {
+  color: #4b0082;
+  margin-bottom: 1rem;
+}
+aside ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+aside li {
+  list-style: none;
+}
+aside a {
+  color: #6a11cb;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+aside a:hover {
+  color: #4b0082;
+}
+aside a.button {
+  display: block;
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(106, 17, 203, 0.5);
+  transition: background 0.3s ease, transform 0.2s ease;
+  user-select: none;
+}
+aside a.button:hover {
+  background: linear-gradient(90deg, #2575fc, #6a11cb);
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(38, 117, 252, 0.7);
+}
+
+/* การ์ดเมนู */
+.menu-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.menu-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  width: 280px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.menu-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.menu-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+  border-bottom: 1px solid #ddd;
+}
+
+.menu-card h3 {
+  margin: 0.8rem 0 0.5rem;
+  color: #5a189a;
+  font-size: 1.25rem;
+}
+
+.menu-card p {
+  padding: 0 1rem 1rem;
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+/* ชื่อหัวข้อกลาง */
+.centered-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #5a189a;
+}
+
+/* โปรไฟล์การ์ด */
+.profile-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+.profile-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 1.5rem 1rem;
+  transition: transform 0.3s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.profile-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: 3px solid #5a189a;
+}
+
+.profile-card h3 {
+  margin: 0.5rem 0 0.3rem;
+  color: #333;
+}
+
+.profile-card p {
+  margin: 0;
+  color: #555;
+}
+
+/* โปรไฟล์แบบแนวนอน */
+.profile-card-horizontal {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  gap: 1.5rem; /* เพิ่มช่องว่างระหว่างรูปกับข้อมูล */
+  padding: 1rem;
+}
+
+.profile-card-horizontal:hover {
+  transform: translateY(-5px);
+}
+
+.profile-card-horizontal img {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.profile-info {
+  flex: 1;
+  background: #f3f0ff;
+  padding: 1rem 1.2rem;
+  border-left: 5px solid #5a189a;
+  border-radius: 12px;
+}
+
+.profile-info h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #4a148c;
+}
+
+.profile-info p {
+  margin: 0.3rem 0 1rem;
+  color: #333;
+}
+
+.facebook-button {
+  background: #1877f2;
+  color: white;
+  text-decoration: none;
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+
+.facebook-button:hover {
+  background: #0d58d1;
+}
+
+/* หัวข้อกลางแบบเล็ก */
+.centered-title {
+  text-align: center;
+  margin: 2rem 0;
+  font-size: 1.8rem;
+  color: #2a006f;
+}
+
+/* รองรับหน้าจอเล็ก */
+@media screen and (max-width: 600px) {
+  .profile-card-horizontal {
+    flex-direction: column;
+    text-align: center;
+    padding: 0; /* ลด padding ที่อาจทำให้รูปดูติด */
+    gap: 0;
+  }
+
+  .profile-card-horizontal img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .profile-info {
+    border-left: none;
+    border-top: 4px solid #5a189a;
+    border-radius: 0 0 12px 12px;
+    padding: 1rem;
+  }
+}
+
+/* กลางข้อความ */
+.center-text {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* padding layout */
+main.container.layout {
+  padding: 2rem 1rem;
+}
+
+/* benefits */
+.benefits {
+  line-height: 1.8;
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.benefits h3 {
+  margin-top: 1.5rem;
+  color: #4a148c;
+}
+
+.benefits .note {
+  margin-top: 2rem;
+  background: #f3e5f5;
+  padding: 1rem;
+  border-left: 4px solid #7b1fa2;
+  border-radius: 4px;
+}
+
+/* media query รองรับหน้าจอเล็ก */
+@media (max-width: 768px) {
+  nav ul {
+    right: 1rem;
+  }
+}
